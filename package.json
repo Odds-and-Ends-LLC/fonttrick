@@ -1,0 +1,17 @@
+{
+  "name": "fonttrick",
+  "version": "1.0.0",
+  "description": "a trick to get canvas registerfont to work in a Vercel serverless function",
+  "license": "MIT",
+  "main": "index.js",
+  "files": [
+      "*"
+  ],
+  "keywords": [
+      "registerfont",
+      "canvas",
+      "vercel",
+      "zeit",
+      "nextjs"
+  ]
+}
