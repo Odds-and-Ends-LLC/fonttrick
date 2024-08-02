@@ -17,10 +17,12 @@ module.exports = function fonttrick() {
   const fontList = {};
 
   fonts.forEach(font => {
-    if (fs.existsSync(`/tmp/ChelseaMarket-Regular.ttf`)) {
-      console.log(`ChelseaMarket-Regular.ttf lives in tmp!!!!`)
+    if (fs.existsSync(`/tmp/${font.path}`)) {
+      console.log(`${font.path} lives in tmp!!!!`)
     } else {
       const FontFile = require.resolve(`./fonts/${font.path}`)
+
+      console.log(FontFile);
 
       fs.copyFileSync(FontFile, `/tmp/${font.path}`, COPYFILE_FICLONE | COPYFILE_EXCL);
 
