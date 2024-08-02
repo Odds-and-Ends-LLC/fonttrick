@@ -16,19 +16,23 @@ module.exports = function fonttrick() {
   ];
   const fontList = {};
 
-  fonts.forEach(font => {
-    if (fs.existsSync(`/tmp/${font.path}`)) {
-      console.log(`${font.path} lives in tmp!!!!`)
-    } else {
-      const FontFile = require.resolve(`./fonts/${font.path}`)
-
-      console.log(FontFile);
-
-      fs.copyFileSync(FontFile, `/tmp/${font.path}`, COPYFILE_FICLONE | COPYFILE_EXCL);
-
-      fontList[font.fontFamily] = `/tmp/${font.path}`;
-    }
-  })
+  try {
+    fonts.forEach(font => {
+      if (fs.existsSync(`/tmp/${font.path}`)) {
+        console.log(`${font.path} lives in tmp!!!!`)
+      } else {
+        const FontFile = require.resolve(`./fonts/${font.path}`)
+  
+        console.log(FontFile);
+  
+        fs.copyFileSync(FontFile, `/tmp/${font.path}`, COPYFILE_FICLONE | COPYFILE_EXCL);
+  
+        fontList[font.fontFamily] = `/tmp/${font.path}`;
+      }
+    })
+  } catch (error) {
+    console.error(err)
+  }
 
   return fontList;
 };
