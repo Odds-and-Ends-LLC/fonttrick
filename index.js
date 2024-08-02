@@ -20,11 +20,11 @@ module.exports = function fonttrick() {
     if (fs.existsSync(`/tmp/ChelseaMarket-Regular.ttf`)) {
       console.log(`ChelseaMarket-Regular.ttf lives in tmp!!!!`)
     } else {
-      const FontFile = require.resolve(`./fonts/${font}`)
+      const FontFile = require.resolve(`./fonts/${font.path}`)
 
-      fs.copyFileSync(FontFile, `/tmp/${font}`, COPYFILE_FICLONE | COPYFILE_EXCL);
+      fs.copyFileSync(FontFile, `/tmp/${font.path}`, COPYFILE_FICLONE | COPYFILE_EXCL);
 
-      fontList[font.fontFamily] = `/tmp/${font}`;
+      fontList[font.fontFamily] = `/tmp/${font.path}`;
     }
   })
 
